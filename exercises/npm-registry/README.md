@@ -1,3 +1,5 @@
+[![npm-registry CI](https://github.com/Lugana707/jobs/actions/workflows/npm-registry.yml/badge.svg)](https://github.com/Lugana707/jobs/actions/workflows/npm-registry.yml)
+
 # Exercise
 
 NodeJS has a managed packages environment called `npm`. A package is a
@@ -21,7 +23,7 @@ Although we are a company that is mainly working with TypeScript and NodeJS we d
 
 ## Prerequisites
 
-* [Node v12 LTS](https://nodejs.org/download/release/latest-v12.x/)
+- [Node v12 LTS](https://nodejs.org/download/release/latest-v12.x/)
 
 ## Getting Started
 

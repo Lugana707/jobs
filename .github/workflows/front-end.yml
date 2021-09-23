@@ -2,13 +2,18 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
+    paths:
+      - exercises/front-end/**
+      - .github/workflows/front-end.yml
   pull_request:
-    branches: [ master ]
+    branches: [master]
+    paths:
+      - exercises/front-end/**
+      - .github/workflows/front-end.yml
 
 jobs:
   front-end:
-
     runs-on: ubuntu-latest
 
     defaults:
