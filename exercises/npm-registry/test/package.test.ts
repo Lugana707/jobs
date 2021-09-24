@@ -8,6 +8,9 @@ describe('/package/:name/:version endpoint', () => {
 
     await request(createApp())
       .get(`/package/${packageName}/${packageVersion}`)
+      .expect('Cache-Control', 'public, max-age=86400')
+      .expect('Content-Type', /json/)
+      .expect(200)
       .expect(({ body }) => expect(body.name).toEqual(packageName));
   });
 
