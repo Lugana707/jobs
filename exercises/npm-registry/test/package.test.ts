@@ -1,37 +1,21 @@
-import * as getPort from 'get-port';
-import got from 'got';
-import { Server } from 'http';
+import * as request from 'supertest';
 import { createApp } from '../src/app';
 
 describe('/package/:name/:version endpoint', () => {
-  let server: Server;
-  let port: number;
-
-  beforeAll(async (done) => {
-    port = await getPort();
-    server = createApp().listen(port, done);
-  });
-
-  afterAll((done) => {
-    server.close(done);
-  });
-
   it('responds', async () => {
     const packageName = 'react';
     const packageVersion = '16.13.0';
 
-    const res: any = await got(`http://localhost:${port}/package/${packageName}/${packageVersion}`).json();
-
-    expect(res.name).toEqual(packageName);
+    await request(createApp())
+      .get(`/package/${packageName}/${packageVersion}`)
+      .expect(({ body }) => expect(body.name).toEqual(packageName));
   });
 
   it('returns dependencies', async () => {
     const packageName = 'react';
     const packageVersion = '16.13.0';
 
-    const res: any = await got(`http://localhost:${port}/package/${packageName}/${packageVersion}`).json();
-
-    expect(res.dependencies).toEqual([
+    const expectedDependencies = [
       {
         dependencies: [ { dependencies: [], name: 'js-tokens', version: '^1.0.1' } ],
         name: 'loose-envify',
@@ -50,6 +34,10 @@ describe('/package/:name/:version endpoint', () => {
         name: 'prop-types',
         version: '^15.6.2',
       },
-    ]);
+    ];
+
+    await request(createApp())
+      .get(`/package/${packageName}/${packageVersion}`)
+      .expect(({ body }) => expect(body.dependencies).toEqual(expectedDependencies));
   });
 });
