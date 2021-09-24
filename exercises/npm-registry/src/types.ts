@@ -39,3 +39,35 @@ export interface NPMPackage {
     };
   };
 }
+
+/**
+ * @example
+ * {
+ *   "name": "react",
+ *   "description": "React is a JavaScript library for building user interfaces.",
+ *   "dist-tags": {
+ *     "latest": "16.13.0"
+ *   },
+ *   "dependencies": {
+ *     "loose-envify": "^1.1.0",
+ *     "object-assign": "^4.1.1",
+ *     "prop-types": "^15.6.2",
+ *   }
+ * }
+ */
+export interface NPMPackageVersion {
+  name: string;
+  description: string;
+  'dist-tags': {
+    [tag: string]: string;
+  };
+  dependencies?: {
+    [packageName: string]: string;
+  };
+}
+
+export interface IPackage {
+  name: string;
+  version: string;
+  dependencies?: IPackage[];
+}
