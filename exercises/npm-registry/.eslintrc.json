@@ -1,5 +1,8 @@
 {
+  "parser": "babel-eslint",
   "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
     "ecmaFeatures": {
       "//": "this setting is deprecated, but node8 doesn't fully support ecma2018 so using it anyway",
       "experimentalObjectRestSpread": true
@@ -27,7 +30,7 @@
         "SwitchCase": 1
       }
     ],
-    "keyword-spacing": ["error", {"before": true, "after": true}],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
     "max-depth": ["error", 5],
     "max-len": ["error", 120],
     "max-statements": ["error", 30],
@@ -40,7 +43,7 @@
     "no-trailing-spaces": "error",
     "no-redeclare": "error",
     "no-undef": "error",
-    "no-unused-vars": ["error", {"argsIgnorePattern": "next"}],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
     "no-use-before-define": ["error", "nofunc"],
     "object-curly-spacing": ["error", "always"],
     "object-shorthand": ["error", "always"],
@@ -56,7 +59,7 @@
         "named": "never"
       }
     ],
-    "space-unary-ops": ["error", {"words": true, "nonwords": false}],
+    "space-unary-ops": ["error", { "words": true, "nonwords": false }],
     "spaced-comment": "error"
   }
 }

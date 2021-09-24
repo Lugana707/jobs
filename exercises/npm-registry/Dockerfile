@@ -7,6 +7,7 @@ FROM base AS test
 COPY package.json package-lock.json .
 RUN npm ci
 COPY ./ ./
+RUN npm run lint
 RUN npm test
 
 FROM base
