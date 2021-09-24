@@ -23,6 +23,10 @@ const getPackageFromNpmApi = async (name: string, version: string): Promise<IPac
 export const getPackage: RequestHandler = async function(req, res, next) {
   const { name, version } = req.params;
 
+  if (!res.getHeader('Cache-Control')) {
+    res.setHeader('Cache-Control', `public, max-age=86400`);
+  }
+
   try {
     const result = await getPackageFromNpmApi(name, version);
 
