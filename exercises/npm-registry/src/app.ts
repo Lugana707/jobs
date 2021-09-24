@@ -9,10 +9,7 @@ import { getPackage } from './package';
 export function createApp() {
   const app = express();
 
-  app
-    .use(compression())
-    .use(helmet())
-    .use(express.json());
+  app.use(compression()).use(helmet()).use(express.json());
 
   app.get('/package/:name/:version', getPackage);
 

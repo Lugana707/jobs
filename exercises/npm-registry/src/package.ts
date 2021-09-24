@@ -11,7 +11,7 @@ const getPackageFromNpmApi = async (name: string, version: string): Promise<IPac
   const { dependencies = {} } = npmPackage;
 
   const nestedDependencies = await Promise.all(
-    Object.keys(dependencies).map(packageName => getPackageFromNpmApi(packageName, dependencies[packageName]))
+    Object.keys(dependencies).map((packageName) => getPackageFromNpmApi(packageName, dependencies[packageName])),
   );
 
   return { name, version, dependencies: nestedDependencies };
@@ -20,11 +20,11 @@ const getPackageFromNpmApi = async (name: string, version: string): Promise<IPac
 /**
  * Attempts to retrieve package data from the npm registry and return it
  */
-export const getPackage: RequestHandler = async function(req, res, next) {
+export const getPackage: RequestHandler = async function (req, res, next) {
   const { name, version } = req.params;
 
   if (!res.getHeader('Cache-Control')) {
-    res.setHeader('Cache-Control', `public, max-age=86400`);
+    res.setHeader('Cache-Control', 'public, max-age=86400');
   }
 
   try {
