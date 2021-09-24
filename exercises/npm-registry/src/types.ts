@@ -23,7 +23,7 @@
  *   }
  * }
  */
-export interface NPMPackage {
+export interface INPMPackage {
   name: string;
   description: string;
   'dist-tags': {
@@ -55,7 +55,7 @@ export interface NPMPackage {
  *   }
  * }
  */
-export interface NPMPackageVersion {
+export interface INPMPackageVersion {
   name: string;
   description: string;
   'dist-tags': {

@@ -1,12 +1,12 @@
 import { RequestHandler } from 'express';
 import got from 'got';
 import * as semver from 'semver';
-import { NPMPackageVersion, IPackage } from './types';
+import { INPMPackageVersion, IPackage } from './types';
 
 const getPackageFromNpmApi = async (name: string, version: string): Promise<IPackage> => {
   const { version: minVersion } = semver.minVersion(version);
 
-  const npmPackage: NPMPackageVersion = await got(`https://registry.npmjs.org/${name}/${minVersion}`).json();
+  const npmPackage: INPMPackageVersion = await got(`https://registry.npmjs.org/${name}/${minVersion}`).json();
 
   const { dependencies = {} } = npmPackage;
 
