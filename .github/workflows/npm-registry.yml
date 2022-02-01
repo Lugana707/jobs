@@ -26,7 +26,7 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1.6.0
       - name: Build & Test
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v2.9.0
         timeout-minutes: 5
         with:
           builder: ${{ steps.buildx.outputs.name }}
